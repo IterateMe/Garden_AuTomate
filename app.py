@@ -1,7 +1,7 @@
 import time
 
 import RPi.GPIO as GPIO
-import hardware_object as HO
+import API as HO
 
 water_valve = HO.EValve(16,15,12)
 on_led = HO.Led(13)
