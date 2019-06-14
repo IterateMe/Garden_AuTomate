@@ -1,4 +1,4 @@
-from hardware_object import Scheduler as SC
+from API import Scheduler as SC
 
 SC = SC()
 
