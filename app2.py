@@ -16,8 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    print(GPIO.input(16))
-    return "app on: {}".format(GPIO.input(13)), "EValve on: {}".format(GPIO.input(16))
+    return "app on: {} -- EValve on: {}".format(GPIO.input(13), GPIO.input(16))
 
 if __name__ == "__main__":
     app.debug(False)
