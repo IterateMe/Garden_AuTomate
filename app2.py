@@ -22,7 +22,7 @@ def main():
 @app.route('/EValve')
 def pushed_button():
     water_valve.manual()
-    return redirect(url_for('index'))
+    return redirect(url_for('/index'))
 
 if __name__ == "__main__":
     app.debug(False)
