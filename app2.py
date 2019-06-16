@@ -18,5 +18,10 @@ app = Flask(__name__)
 def main():
     return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13))
 
+@app.route('/EValve')
+def pushed_button():
+    water_valve.manual()
+    return redirect(url_for('/'))
+
 if __name__ == "__main__":
     app.debug(False)
