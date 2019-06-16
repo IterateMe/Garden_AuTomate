@@ -19,8 +19,9 @@ def main():
     print(GPIO.input(13))
     return GPIO.input(13)
 
-while True:
-    rep = input("[q] to quit")
-    if rep == "q":
+if __name__ == "__main__":
+    try:
+        app.debug(False)
+        app.run(host= '192.168.1.225', port=6001)
+    except KeyboardInterrupt:
         GPIO.cleanup()
-        KeyboardInterrupt
