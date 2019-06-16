@@ -19,7 +19,4 @@ def main():
     return "app on: {}".format(GPIO.input(13))
 
 if __name__ == "__main__":
-    try:
-        app.debug(False)
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+    app.debug(False)
