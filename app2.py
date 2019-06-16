@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return "app on: {} -- EValve on: {}".format(GPIO.input(13), GPIO.input(16))
+    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13))
 
 if __name__ == "__main__":
     app.debug(False)
