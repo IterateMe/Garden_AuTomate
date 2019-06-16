@@ -2,7 +2,6 @@ import time
 import subprocess
 
 import RPi.GPIO as GPIO
-from crontab import CronTab
 
 
 
@@ -91,6 +90,7 @@ class Button:
 
 class Scheduler:
     def __init__(self):
+        from crontab import CronTab
         self.cron = CronTab(user=True)
         
     def start_at_boot(self, path=None):
