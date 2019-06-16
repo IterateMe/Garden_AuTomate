@@ -16,12 +16,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    print(GPIO.input(13))
-    return GPIO.input(13)
+    return "Hello world"
 
 if __name__ == "__main__":
     try:
         app.debug(False)
-        app.run(host= '192.168.1.225', port=6001)
-    except KeyboardInterrupt:
-        GPIO.cleanup()
