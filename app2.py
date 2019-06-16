@@ -2,11 +2,11 @@ import time
 
 from flask import Flask, g, render_template, flash, redirect, url_for
 import RPi.GPIO as GPIO
-import API
+from API import EValve, Button, Led
 
-water_valve = API.EValve(16,15,12)
-on_led = API.Led(13)
-off_button = API.Button(11, 13)
+water_valve = EValve(16,15,12)
+on_led = Led(13)
+off_button = Button(11, 13)
 
 off_button.set_detection(off_button.close_RPi)
 
