@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return "Hello world"
+    return "app on: {}".format(GPIO.input(13))
 
 if __name__ == "__main__":
     app.debug(False)
