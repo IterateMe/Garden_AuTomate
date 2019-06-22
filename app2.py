@@ -24,8 +24,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def main():
-    jobs = sched.get_jobs()
-    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs = jobs)
+    sched.print_jobs()
+    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs = sched.print_jobs())
 
 @app.route('/Manual')
 def pushed_button():
@@ -34,7 +34,7 @@ def pushed_button():
 
 @app.route("/scheduler", methods=["GET","POST"])
 def schedule():
-    return render_template("form.html")
+    return render_template("form.html", jobs = sched.print_jobs())
 
 @app.route("/form_handler", methods=["GET","POST"])
 def handling():
