@@ -24,7 +24,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def main():
-    jobs = sched.print_jobs()
+    jobs = sched.get_jobs()
     return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs = jobs)
 
 @app.route('/Manual')
@@ -42,7 +42,7 @@ def handling():
     min = str(request.form["min"])
     duration = int(request.form["duration"])
     sched.add_job(water_valve.scheduled, CronTrigger.from_crontab("{} {} * * *".format(min, hour)), [duration])
-    return "Requested schedule is at {}:{} during{}".format(hour, min, str(duration))
+    return redirect(url_for("schedule"))
 
 if __name__ == "__main__":
     app.debug(False)
