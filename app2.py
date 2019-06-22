@@ -32,7 +32,8 @@ def schedule():
     return render_template("form.html")
 
 @app.route("/form_handler")
-
+def handling():
+    return "handled"
 
 if __name__ == "__main__":
     app.debug(False)
