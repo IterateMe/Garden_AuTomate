@@ -41,7 +41,7 @@ def handling():
     hour = str(request.form["hour"])
     min = str(request.form["min"])
     duration = int(request.form["duration"])
-    sched.add_job(scheduled, CronTrigger.from_crontab("{} {} * * *"), [duration])
+    sched.add_job(water_valve.scheduled, CronTrigger.from_crontab("{} {} * * *"), [duration])
     return "Requested schedule is at {}:{} during{}".format(hour, min, str(duration))
 
 if __name__ == "__main__":

@@ -32,6 +32,12 @@ class EValve:
         else:
             self.on()
 
+    def scheduled(self, duration, *args):
+        duration = duration
+        self.on()
+        time.sleep(duration*60)
+        self.off()
+
 
 
 class Led:
