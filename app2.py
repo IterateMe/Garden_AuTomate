@@ -25,7 +25,7 @@ app = Flask(__name__)
 @app.route('/index')
 def main():
     jobs = sched.print_jobs()
-    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs)
+    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs = jobs)
 
 @app.route('/Manual')
 def pushed_button():
