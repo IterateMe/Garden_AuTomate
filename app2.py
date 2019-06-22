@@ -27,11 +27,11 @@ def pushed_button():
     water_valve.manual()
     return redirect(url_for('main'))
 
-@app.route("/scheduler")
+@app.route("/scheduler", methods=["GET","POST"])
 def schedule():
     return render_template("form.html")
 
-@app.route("/form_handler")
+@app.route("/form_handler", methods=["GET","POST"])
 def handling():
     return "Requested schedule is at {}:{} during{}".format(request.form["hour"], request.form["min"], request.form["duration"])
 
