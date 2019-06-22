@@ -2,8 +2,9 @@ import time
 
 from flask import Flask, g, render_template, flash, redirect, url_for, request
 
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 import RPi.GPIO as GPIO
-
 
 from API import EValve, Button, Led
 
@@ -15,12 +16,16 @@ off_button.set_detection(off_button.close_RPi)
 
 on_led.on()
 
+sched = BackgroundScheduler()
+sched.start()
+
 app = Flask(__name__)
 
 @app.route('/')
 @app.route('/index')
 def main():
-    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13))
+    jobs = sched.print_jobs()
+    return render_template('main.html', EValve_status = GPIO.input(16), app_status = GPIO.input(13), jobs)
 
 @app.route('/Manual')
 def pushed_button():
@@ -33,7 +38,11 @@ def schedule():
 
 @app.route("/form_handler", methods=["GET","POST"])
 def handling():
-    return "Requested schedule is at {}:{} during{}".format(request.form["hour"], request.form["min"], request.form["duration"])
+    hour = str(request.form["hour"])
+    min = str(request.form["min"])
+    duration = int(request.form["duration"])
+    sched.add_job(scheduled, CronTrigger.from_crontab("{} {} * * *"), [duration])
+    return "Requested schedule is at {}:{} during{}".format(hour, min, str(duration))
 
 if __name__ == "__main__":
     app.debug(False)
