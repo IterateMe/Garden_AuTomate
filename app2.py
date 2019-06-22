@@ -33,7 +33,7 @@ def schedule():
 
 @app.route("/form_handler")
 def handling():
-    return "Requested schedule is at {}:{} during{}".format(request.from["hour"], request.from["min"], request.from["duration"])
+    return "Requested schedule is at {}:{} during{}".format(request.form["hour"], request.form["min"], request.form["duration"])
 
 if __name__ == "__main__":
     app.debug(False)
