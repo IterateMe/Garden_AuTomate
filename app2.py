@@ -1,7 +1,7 @@
 import time
 
 from flask import Flask, g, render_template, flash, redirect, url_for
-from
+
 import RPi.GPIO as GPIO
 
 
