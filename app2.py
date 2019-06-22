@@ -24,5 +24,10 @@ def pushed_button():
     water_valve.manual()
     return redirect(url_for('main'))
 
+@app.route("/scheduler")
+def schedule():
+    return render_template("form.html")
+
+
 if __name__ == "__main__":
     app.debug(False)
