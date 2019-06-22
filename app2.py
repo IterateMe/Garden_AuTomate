@@ -1,7 +1,10 @@
 import time
 
 from flask import Flask, g, render_template, flash, redirect, url_for
+from
 import RPi.GPIO as GPIO
+
+
 from API import EValve, Button, Led
 
 water_valve = EValve(16,15,12)
@@ -27,6 +30,8 @@ def pushed_button():
 @app.route("/scheduler")
 def schedule():
     return render_template("form.html")
+
+@app.route("/form_handler")
 
 
 if __name__ == "__main__":
