@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 
 from API import EValve, Button, Led
 
-water_valve = EValve(16,15,12)
+water_valve = EValve(40,15,12)
 on_led = Led(13)
 off_button = Button(11, 13)
 
