@@ -14,7 +14,7 @@ class EValve:
         
         self.led = Led(pin_led)
         self.button = Button(pin_button)
-        GPIO.add_event_detect(pin_button, GPIO.RISING, callback = self.manual, bouncetime = 200)
+        GPIO.add_event_detect(pin_button, GPIO.RISING, callback = self.manual, bouncetime = 1000)
         
     def on(self):
         print("EValve {} ON".format(self.pin_relay))
@@ -83,7 +83,7 @@ class Button:
             self.led = Led(pin_led)
         
     def set_detection(self, callback):
-        GPIO.add_event_detect(self.pin_button, GPIO.RISING, callback=callback, bouncetime = 200)
+        GPIO.add_event_detect(self.pin_button, GPIO.RISING, callback=callback, bouncetime = 1000)
         
     def close_RPi(self, *args):
         self.led.blink(count=10)
