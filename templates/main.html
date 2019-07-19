@@ -12,7 +12,7 @@
         JOBS:<br>
         {% set count = 0 %}
         {% for job in jobs %}
-            <p>{{count + 1}} Next run time:{{job.next_run_time}} </p><br>
+            <p>{{count = count + 1}} Next run time:{{job.next_run_time}} </p><br>
         {% endfor %}
     </p>
 
