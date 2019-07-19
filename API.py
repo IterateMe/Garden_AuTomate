@@ -38,6 +38,9 @@ class EValve:
         time.sleep(duration*60)
         self.off()
 
+    def get_status(self, pin):
+        return GPIO.input(pin)
+
 
 
 class Led:
@@ -69,7 +72,8 @@ class Led:
             self.off()
             time.sleep(sleep)
             last_until -= 1
-
+    def get_status(self, pin):
+        return GPIO.input(pin)
 
 
 class Button:
@@ -92,6 +96,9 @@ class Button:
             subprocess.call("sudo shutdown -h now", shell=True)
         else:
             GPIO.output(self.pin_led, 1)
+
+    def get_status(self, pin):
+        return GPIO.input(pin)
 
 
 class Scheduler:
