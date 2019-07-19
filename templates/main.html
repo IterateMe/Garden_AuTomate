@@ -7,11 +7,13 @@
 <body>
     <a href="/scheduler">IRRIGATION SCHEDULER</a>
     <h1> EValve status {{EValve_status}}</h1>
-    <h1><a href="/Manual"><input type="button" value="MANUAL ON/off"</a></h1>
+    <h1><a href="/Manual"><input type="button" value="MANUAL ON/off"></a></h1>
     <p>
         JOBS:<br>
         {% for job in jobs %}
-            <p>Next run time:{{job.next_run_time}} </p><br>
+            {% count = 1 %}
+            <p>{{count}} Next run time:{{job.next_run_time}} </p><br>
+            {% count += 1 %}
         {% endfor %}
     </p>
 
