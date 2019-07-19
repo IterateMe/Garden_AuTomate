@@ -11,9 +11,9 @@
     <p>
         JOBS:<br>
         {% for job in jobs %}
-            {% count = 1 %}
+            {% set count = 1 %}
             <p>{{count}} Next run time:{{job.next_run_time}} </p><br>
-            {% count += 1 %}
+            {% set count += 1 %}
         {% endfor %}
     </p>
 
