@@ -11,7 +11,8 @@
     <h1><a href="/Manual"><input type="button" value="MANUAL ON/off"</a></h1>
     <p>
         JOBS:<br>
-        {{jobs}}
+        {% for job in jobs %}
+            {{job.name()}} {{job.next_run_time()}}
     </p>
 
 </body>
