@@ -11,7 +11,7 @@
     <p>
         JOBS:<br>
         {% for job in jobs %}
-            {{job.name()}} {{job.next_run_time()}}
+            {{job.name}} {{job.next_run_time}}
         {% endfor %}
     </p>
 
