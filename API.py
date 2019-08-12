@@ -92,38 +92,3 @@ class Button:
             subprocess.call("sudo shutdown -h now", shell=True)
         else:
             GPIO.output(self.pin_led, 1)
-
-
-
-class Scheduler:
-    def __init__(self):
-        from crontab import CronTab
-        self.cron = CronTab(user=True)
-        
-    def start_at_boot(self, path=None):
-        if path == None:
-            self.path = "python /home/pi/Desktop/Garden_automate_V2/app.py"
-        else:
-            self.path = path
-        at_reboot = self.cron.new(command = self.path, comment = "FIRST")
-        at_reboot.setall("@reboot")
-        self.cron.write()
-        
-    def daily(self):
-        print("Enter the HOUR and MIN you want the schedule to start")
-        hour = int(input("HOUR(/24):     "))
-        minute = int(input("MIN(/59):     "))
-        print("Enter the time you want it to last")
-        during = int(input("during(min):       "))*60
-        
-        command = "python /home/pi/Desktop/Garden_automate_V2/run.py {}".format(during)
-        comment = "Daily - {}:{} - {} min".format(hour,minute,during/60) 
-        water_job_up = self.cron.new(command = command, comment = comment)
-        water_job_up.setall(minute, hour, None, None, None)
-        
-        self.cron.write()
-        
-        print("Task scheduled")
-        print("Your schedules:")
-        for job in self.cron:
-            print(job)
