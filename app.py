@@ -1,22 +1,48 @@
 import time
 
-import RPi.GPIO as GPIO
-import API
+from flask import Flask, g, render_template, flash, redirect, url_for, request
 
-water_valve = API.EValve(16,15,12)
-on_led = API.Led(13)
-off_button = API.Button(11, 13)
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
+import RPi.GPIO as GPIO
+
+from API import EValve, Button, Led
+
+water_valve = EValve(40,15,12)
+on_led = Led(13)
+off_button = Button(11, 13)
 
 off_button.set_detection(off_button.close_RPi)
 
 on_led.on()
 
-def run():
-    time.sleep(60)
+sched = BackgroundScheduler()
+sched.start()
+
+app = Flask(__name__)
+
+@app.route('/')
+@app.route('/index')
+def main():
+    sched.print_jobs()
+    return render_template('main.html', EValve_status = GPIO.input(40), jobs = sched.get_jobs())
+
+@app.route('/Manual')
+def pushed_button():
+    water_valve.manual()
+    return redirect(url_for('main'))
+
+@app.route("/scheduler", methods=["GET","POST"])
+def schedule():
+    return render_template("form.html", jobs = sched.get_jobs())
+
+@app.route("/form_handler", methods=["GET","POST"])
+def handling():
+    hour = str(request.form["hour"])
+    min = str(request.form["min"])
+    duration = int(request.form["duration"])
+    sched.add_job(water_valve.scheduled, CronTrigger.from_crontab("{} {} * * *".format(min, hour)), [duration])
+    return redirect(url_for("schedule"))
 
 if __name__ == "__main__":
-    try:
-        while True:
-            run()
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+    app.debug(False)
