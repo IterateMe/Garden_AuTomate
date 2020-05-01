@@ -7,8 +7,8 @@ There is no predefined irrigation time or schedule, you will have to define it b
 This project has been succesfully tested on "Rpi 3B+" & "Rpi Zero WH" with the Raspbian OS (Desktop & Lite versions)
 
 
-Notes:
--Libraries you will need:
+Notes:  
+-Libraries you will need:  
 --
 
 - In order to run the scripts properly, do so from the command prompt as it is the most reliable way to run scripts on a Rpi.
