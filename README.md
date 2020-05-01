@@ -8,9 +8,8 @@ This project has been succesfully tested on "Rpi 3B+" & "Rpi Zero WH" with the R
 
 
 Notes:
-- First, you have to make sure you have the latest version of python-crontab library installed with "pip" on your RPi. (the ubuntu repository you access with "sudo apt-get install python-crontab" is not up to date)
-          pip install python-crontab
-          (if pip isn't recognised, install it with "sudo apt-get install pip")
+-Libraries you will need:
+--
 
 - In order to run the scripts properly, do so from the command prompt as it is the most reliable way to run scripts on a Rpi.
 
