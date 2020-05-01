@@ -8,8 +8,8 @@ This project has been succesfully tested on "Rpi 3B+" & "Rpi Zero WH" with the R
 
 
 Notes:  
--Libraries you will need:  
---
+- Libraries you will need:  
+-- sgsr
 
 - In order to run the scripts properly, do so from the command prompt as it is the most reliable way to run scripts on a Rpi.
 
