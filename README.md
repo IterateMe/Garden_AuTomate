@@ -23,7 +23,7 @@ Content description:
     For exemple, if you want to test it for 15 seconds, type: "python run.py 15"
     This script also include the "pause" while run.py runs. (blinking led)--->
 
-- pycron.py is the script used to enter your irrigation schedules into crontab.
-    If you want to remove all your crontab lines, type "crontab -r" from the command prompt.
+<!--- pycron.py is the script used to enter your irrigation schedules into crontab.
+    If you want to remove all your crontab lines, type "crontab -r" from the command prompt.--->
 
 - API.py contains all the class and methods used in the other scripts.
