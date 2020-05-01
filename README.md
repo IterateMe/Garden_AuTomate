@@ -18,10 +18,10 @@ Content description:
 - app.py is the main script from witch you can manually turn on and off the solenoid valve and power of your RPi headless if you need to securelly power it off.
     You can also add as much solenoid valve as you want to app.py, instanciating them from the API.
 
-- run.py is the script the cron deamon runs for each schedule set in the crontab. If you want to test it individually, make sure you start app.py as they are built to work together.
+<!--- run.py is the script the cron deamon runs for each schedule set in the crontab. If you want to test it individually, make sure you start app.py as they are built to work together.
     Also, when run it in the command prompt, make sure to add a time argument for the number of seconds you want it to run.
     For exemple, if you want to test it for 15 seconds, type: "python run.py 15"
-    This script also include the "pause" while run.py runs. (blinking led)
+    This script also include the "pause" while run.py runs. (blinking led)--->
 
 - pycron.py is the script used to enter your irrigation schedules into crontab.
     If you want to remove all your crontab lines, type "crontab -r" from the command prompt.
